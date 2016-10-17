@@ -1,10 +1,98 @@
 
 
 Hello World
+<!-- 
+emailAddress:email@email.com
+entry.1958003550:Firstname
+entry.1374922017:lastname
+entry.969691400:Yes
+entry.1854505672:whoelse
+entry.1103569766:children
+entry.732578948:song
+entry.993329304:freetext
+ -->
 
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScP8YWxfbxYDW-V9XwEJtTIy1pUUJN9ndk4HU2RVPRQVPQgwg/formResponse" method="post">
+  <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" class="form-control" id="first-name" placeholder="Name" name="entry.1958003550" aria-describedby="first-name-error">
+  </div>
+  <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="email" class="form-control" id="last-name" placeholder="Last" name="entry.1374922017" aria-describedby="last-name-error">
+  </div>
+  <div class="form-group">
+        <label for="email">What's your email?</label>
+        <input type="text" class="form-control" id="email" placeholder="Email" name="emailAddress" aria-describedby="email-error">
+  </div>
+  <div class="form-group">
+        <label for="attending">Attending?</label>
+        <textarea class="form-control" id="attending" placeholder="attending" name="entry.969691400" aria-describedby="attending-error"></textarea>
+  </div>
+  <div class="form-group">
+        <label for="who-else">Who Else?</label>
+        <textarea class="form-control" id="who-else" placeholder="whoelse" name="entry.1854505672" aria-describedby="who-else-error"></textarea>
+  </div>
+  <div class="form-group">
+        <label for="children">how many children?</label>
+        <textarea class="form-control" id="children" placeholder="children" name="entry.1103569766" aria-describedby="children-error"></textarea>
+  </div>
+  <div class="form-group">
+        <label for="song">fav song?</label>
+        <textarea class="form-control" id="song" placeholder="favsong" name="entry.732578948" aria-describedby="song-error"></textarea>
+  </div>
+  <div class="form-group">
+        <label for="free-Text">fav free-Text?</label>
+        <textarea class="form-control" id="free-Text" placeholder="Freetext" name="entry.993329304" aria-describedby="free-Text-error"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default" id="contact-form-submit">Submit</button>
+</form>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-	console.log('test')
-
+	
+$('#contact-form-submit').click(function(e) {
+    e.preventDefault();
+    var firstName = $('#first-name').val();
+    var lastName = $('#last-name').val();
+    var email = $('#email').val();
+    var attending = $('#attending').val();
+    var whoelse = $('#who-else').val();
+    var children = $('#children').val();
+    var song = $('#song').val();
+    var freeText = $('#free-Text').val();
+    // data validation code here
+    var url = "//docs.google.com/forms/d/16S1tuPQY_g0atfjLNnGxv5vyo3BiWThXoYchwOArXy0/formResponse";
+    var data = {
+        'entry.1958003550': firstName,
+        'entry.1374922017': lastName,
+        'emailAddress': email,
+        'entry.969691400': attending,
+        'entry.1854505672': whoelse,
+        'entry.1103569766': children,
+        'entry.732578948': song,
+        'entry.993329304': freeText
+        //trailing comma this might throw an error
+    };
+    $.ajax({
+            type: "POST",
+            url: url,
+            dataType: "json",
+            data: data,
+            statusCode: {
+                    0: function() {
+                            console.log("unknown");
+                            window.location.href = "rsvp/index.html";
+                    },
+                    200: function() {
+                            console.log("success");
+                            window.location.href = "rsvp/index.html";
+                    }
+            }
+    });
+});
 
 
 
