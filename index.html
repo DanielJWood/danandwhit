@@ -22,10 +22,10 @@ entry.993329304:freetext
         <label for="last-name">Last Name</label>
         <input type="email" class="form-control" id="last-name" placeholder="Last" name="entry.1374922017" aria-describedby="last-name-error">
   </div>
-  <div class="form-group">
+<!--   <div class="form-group">
         <label for="email">What's your email?</label>
         <input type="text" class="form-control" id="email" placeholder="Email" name="emailAddress" aria-describedby="email-error">
-  </div>
+  </div> -->
   <div class="form-group">
         <label for="attending">Attending?</label>
         <textarea class="form-control" id="attending" placeholder="attending" name="entry.969691400" aria-describedby="attending-error"></textarea>
@@ -58,7 +58,7 @@ $('#contact-form-submit').click(function(e) {
     e.preventDefault();
     var firstName = $('#first-name').val();
     var lastName = $('#last-name').val();
-    var email = $('#email').val();
+    // var email = $('#email').val();
     var attending = $('#attending').val();
     var whoelse = $('#who-else').val();
     var children = $('#children').val();
@@ -69,12 +69,12 @@ $('#contact-form-submit').click(function(e) {
     var data = {
         'entry.1958003550': firstName,
         'entry.1374922017': lastName,
-        'emailAddress': email,
+        // 'emailAddress': email,
         'entry.969691400': attending,
         'entry.1854505672': whoelse,
         'entry.1103569766': children,
         'entry.732578948': song,
-        'entry.993329304': freeText
+        'entry.993329304': freeText,
         //trailing comma this might throw an error
     };
     $.ajax({
